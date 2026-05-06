@@ -1,0 +1,909 @@
+/* =============================================
+   ISP MANAGER - MAIN STYLESHEET
+   Theme: Purple + Blue Gradient, Dark Background
+   ============================================= */
+
+/* Load Google Font called Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Remove default browser spacing from everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =============================================
+   WHOLE PAGE BACKGROUND
+   Network dot pattern + dark purple gradient
+   ============================================= */
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    min-height: 100vh;
+
+    /* Dark purple base color */
+    background-color: #0f0c29;
+
+    /* Layer 1: small purple dots (network pattern) */
+    /* Layer 2: faint horizontal lines */
+    /* Layer 3: faint vertical lines */
+    /* Layer 4: main dark purple gradient */
+    background-image:
+        radial-gradient(circle, rgba(124,58,237,0.15) 1px, transparent 1px),
+        linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px),
+        linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+
+    /* Size of each layer */
+    background-size: 40px 40px, 40px 40px, 40px 40px, 100% 100%;
+
+    /* Default text color (white but slightly transparent) */
+    color: rgba(255,255,255,0.85);
+}
+
+/* =============================================
+   TOP NAVIGATION BAR
+   ============================================= */
+nav {
+    /* Semi transparent dark background with blur effect */
+    background: rgba(15,12,41,0.85);
+    backdrop-filter: blur(20px);
+
+    /* Thin line at the bottom of navbar */
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+
+    /* Left and right spacing */
+    padding: 0 28px;
+
+    /* Put logo, links and logout button in a row */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 64px;
+
+    /* Stick navbar to top when scrolling */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* ISP Manager logo text */
+nav .logo {
+    font-size: 20px;
+    font-weight: 800;
+
+    /* Gradient text from purple to cyan */
+    background: linear-gradient(135deg, #a78bfa, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Remove bullet points from nav links list */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 4px;
+}
+
+/* Each nav link */
+nav ul li a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+/* Nav link when mouse hovers over it */
+nav ul li a:hover {
+    color: white;
+    background: rgba(124,58,237,0.2);
+}
+
+/* Nav link for the current active page */
+nav ul li a.active {
+    color: white;
+    background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(37,99,235,0.4));
+    border: 1px solid rgba(124,58,237,0.3);
+}
+
+/* Logout button in navbar */
+nav .logout-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+}
+
+nav .logout-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(239,68,68,0.4);
+}
+
+/* =============================================
+   LOGIN PAGE BACKGROUND
+   ============================================= */
+.login-body {
+    min-height: 100vh;
+    background-color: #0f0c29;
+    background-image:
+        radial-gradient(circle, rgba(124,58,237,0.2) 1px, transparent 1px),
+        linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px),
+        linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    background-size: 40px 40px, 40px 40px, 40px 40px, 100% 100%;
+
+    /* Center the login card on screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* =============================================
+   LOGIN CARD (the white glass box)
+   ============================================= */
+.login-card {
+    /* Semi transparent glass look */
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+/* Logo area inside login card */
+.login-card .brand {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.login-card .brand h1 {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a78bfa, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-card .brand p {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* =============================================
+   CUSTOMER / ADMIN TAB SWITCH ON LOGIN PAGE
+   ============================================= */
+.tab-switch {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 24px;
+    background: rgba(0,0,0,0.2);
+}
+
+.tab-switch a {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+/* Active tab (currently selected) */
+.tab-switch a.active {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: white;
+}
+
+/* =============================================
+   FORM FIELDS (input boxes, dropdowns, textarea)
+   ============================================= */
+.form-group {
+    margin-bottom: 16px;
+}
+
+/* Label above each input */
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* The actual input box */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    font-size: 14px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+/* Placeholder text inside input */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+/* Input when clicked / focused */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #a78bfa;
+    background: rgba(124,58,237,0.1);
+    box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+}
+
+/* Dropdown options background */
+.form-group select option {
+    background: #1e1040;
+    color: white;
+}
+
+/* Fix all input types to show white text */
+input[type="month"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="number"],
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    color: white;
+    background: rgba(255,255,255,0.07);
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+    display: inline-block;
+    padding: 11px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Blue/purple main button */
+.btn-primary {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: white;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(124,58,237,0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(124,58,237,0.5);
+}
+
+/* Green button */
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+}
+
+.btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(16,185,129,0.4);
+}
+
+/* Red button */
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+}
+
+.btn-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(239,68,68,0.4);
+}
+
+/* Small button size */
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+/* =============================================
+   MAIN PAGE WRAPPER (centers content)
+   ============================================= */
+.page-wrap {
+    max-width: 1150px;
+    margin: 32px auto;
+    padding: 0 24px;
+}
+
+/* Page heading at top */
+.page-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, white, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* =============================================
+   STAT CARDS (dashboard numbers like Total Customers)
+   ============================================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+/* Colored top line on each stat card */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+}
+
+/* Green top line */
+.stat-card.green::before {
+    background: linear-gradient(90deg, #10b981, #06b6d4);
+}
+
+/* Orange top line */
+.stat-card.orange::before {
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+}
+
+/* Red top line */
+.stat-card.red::before {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Small label text like "Total Customers" */
+.stat-card .label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+/* Big number */
+.stat-card .value {
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+}
+
+/* =============================================
+   CONTENT CARDS (white glass boxes on each page)
+   ============================================= */
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* Card heading */
+.card h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+/* =============================================
+   DATA TABLES
+   ============================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+/* Table header row */
+table th {
+    background: rgba(124,58,237,0.2);
+    color: #a78bfa;
+    font-weight: 600;
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(124,58,237,0.3);
+}
+
+/* Table data cells */
+table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.85);
+}
+
+/* Row highlight when mouse hovers */
+table tr:hover td {
+    background: rgba(124,58,237,0.08);
+}
+
+/* Remove bottom border from last row */
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* =============================================
+   STATUS BADGES (small colored labels)
+   ============================================= */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.badge-active    { background: rgba(16,185,129,0.2);  color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.badge-unpaid    { background: rgba(245,158,11,0.2);  color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+.badge-paid      { background: rgba(16,185,129,0.2);  color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.badge-open      { background: rgba(37,99,235,0.2);   color: #60a5fa; border: 1px solid rgba(37,99,235,0.3); }
+.badge-closed    { background: rgba(148,163,184,0.2); color: #94a3b8; border: 1px solid rgba(148,163,184,0.3); }
+.badge-ongoing   { background: rgba(239,68,68,0.2);   color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.badge-resolved  { background: rgba(16,185,129,0.2);  color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.badge-suspended { background: rgba(239,68,68,0.2);   color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+/* =============================================
+   ALERT MESSAGES (success and error boxes)
+   ============================================= */
+.alert {
+    padding: 13px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Green success message */
+.alert-success {
+    background: rgba(16,185,129,0.15);
+    color: #34d399;
+    border: 1px solid rgba(16,185,129,0.3);
+}
+
+/* Red error message */
+.alert-danger {
+    background: rgba(239,68,68,0.15);
+    color: #f87171;
+    border: 1px solid rgba(239,68,68,0.3);
+}
+
+/* =============================================
+   FORM CARD (small form boxes on pages)
+   ============================================= */
+.form-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 580px;
+}
+
+/* =============================================
+   PLAN SELECTION CARDS (customer dashboard)
+   ============================================= */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+}
+
+/* Each plan box */
+.plan-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 22px 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Colored top line (hidden by default) */
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Plan card when hovered */
+.plan-card:hover {
+    border-color: rgba(124,58,237,0.5);
+    background: rgba(124,58,237,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(124,58,237,0.2);
+}
+
+.plan-card:hover::before {
+    opacity: 1;
+}
+
+/* Currently active plan */
+.plan-card.selected {
+    border-color: rgba(16,185,129,0.5);
+    background: rgba(16,185,129,0.08);
+}
+
+.plan-card.selected::before {
+    background: linear-gradient(90deg, #10b981, #06b6d4);
+    opacity: 1;
+}
+
+/* Plan name like "Basic" "Premium" */
+.plan-card .plan-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+/* Plan price like "৳900" */
+.plan-card .plan-price {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a78bfa, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}
+
+.plan-card .plan-price span {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    -webkit-text-fill-color: rgba(255,255,255,0.5);
+}
+
+/* Speed and GB info */
+.plan-card .plan-detail {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin: 4px 0;
+}
+
+/* Select Plan button inside plan card */
+.plan-card .select-btn {
+    margin-top: 16px;
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+}
+
+.plan-card .select-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(124,58,237,0.4);
+}
+
+/* Green badge showing current plan */
+.current-plan-badge {
+    display: inline-block;
+    background: rgba(16,185,129,0.2);
+    color: #34d399;
+    border: 1px solid rgba(16,185,129,0.3);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* =============================================
+   OUTAGE ALERT (red warning on customer dashboard)
+   ============================================= */
+.outage-alert {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-left: 4px solid #ef4444;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 22px;
+}
+
+.outage-alert .alert-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f87171;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Blinking red dot */
+.dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background: #ef4444;
+    border-radius: 50%;
+    animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+}
+
+/* Individual outage item */
+.outage-item {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.outage-item .o-title {
+    font-weight: 600;
+    color: #f87171;
+    margin-bottom: 3px;
+}
+
+.outage-item .o-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+}
+
+/* Outage type badges */
+.outage-type {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.type-emergency   { background: rgba(239,68,68,0.2);  color: #f87171; }
+.type-maintenance { background: rgba(245,158,11,0.2); color: #fbbf24; }
+
+/* Green box when no outages */
+.no-outage {
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-left: 4px solid #10b981;
+    border-radius: 12px;
+    padding: 13px 18px;
+    margin-bottom: 22px;
+    font-size: 13px;
+    color: #34d399;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =============================================
+   SUPPORT TICKET CARDS (my_tickets.php)
+   ============================================= */
+.ticket-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+}
+
+.ticket-card:hover {
+    border-color: rgba(124,58,237,0.4);
+}
+
+.ticket-card .t-subject {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.ticket-card .t-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+}
+
+/* Green box showing assigned staff */
+.staff-assigned {
+    display: flex;
+    gap: 12px;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.staff-assigned .icon {
+    font-size: 20px;
+}
+
+.staff-assigned .info strong {
+    color: #34d399;
+    font-size: 13px;
+}
+
+.staff-assigned .info p {
+    color: rgba(255,255,255,0.5);
+    margin: 4px 0 0;
+    font-size: 12px;
+}
+
+/* Yellow box when no staff assigned yet */
+.not-assigned {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 10px;
+    padding: 9px 14px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #fbbf24;
+}
+
+/* =============================================
+   STAFF ROLE BADGES
+   ============================================= */
+.staff-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 2px 2px 2px 0;
+}
+
+.tag-technician    { background: rgba(16,185,129,0.2);  color: #34d399; }
+.tag-billing_agent { background: rgba(245,158,11,0.2);  color: #fbbf24; }
+.tag-support_agent { background: rgba(37,99,235,0.2);   color: #60a5fa; }
+.tag-admin         { background: rgba(148,163,184,0.2); color: #94a3b8; }
+
+/* =============================================
+   LINKS
+   ============================================= */
+a {
+    color: #a78bfa;
+}
+
+a:hover {
+    color: #06b6d4;
+}
+
+/* =============================================
+   CUSTOM SCROLLBAR (purple thin bar)
+   ============================================= */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(124,58,237,0.4);
+    border-radius: 3px;
+}
+
+/* =============================================
+   MOBILE RESPONSIVE (small screens)
+   ============================================= */
+@media (max-width: 768px) {
+    nav {
+        padding: 12px 16px;
+        height: auto;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    nav ul {
+        gap: 2px;
+        flex-wrap: wrap;
+    }
+
+    nav ul li a {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .page-wrap {
+        padding: 0 14px;
+        margin: 20px auto;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .login-card {
+        padding: 32px 24px;
+    }
+}
