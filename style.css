@@ -136,20 +136,35 @@ nav .logout-btn:hover {
    ============================================= */
 .login-body {
     min-height: 100vh;
+    background:
+        /* dark overlay so login card is readable */
+        linear-gradient(rgba(15,12,41,0.75), rgba(48,43,99,0.80)),
+        /* your image */
+        url('../css/bg.png') center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+
+/* .login-body {
+    min-height: 100vh;
     background-color: #0f0c29;
     background-image:
         radial-gradient(circle, rgba(124,58,237,0.2) 1px, transparent 1px),
         linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
         linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px),
         linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    background-size: 40px 40px, 40px 40px, 40px 40px, 100% 100%;
+    background-size: 40px 40px, 40px 40px, 40px 40px, 100% 100%; */
 
-    /* Center the login card on screen */
+    /* Center the login card on screen
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-}
+} */
 
 /* =============================================
    LOGIN CARD (the white glass box)
